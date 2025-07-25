@@ -26,9 +26,16 @@ from rtslib_fb import (
     LUN,
     MappedLUN,
     RTSLibError,
-    RTSLibNotInCFS,
     NodeACLGroup,
 )
+
+# This commit https://github.com/open-iscsi/rtslib-fb/commit/fdd69b1984bac6a6c3f08890bc22267b848a26ac
+# renamed a number of error classes which causes us to do the following
+try:
+    from rtslib_fb import RTSLibNotInCFS
+except ImportError:
+    from rtslib_fb import RTSLibNotInCFSError as RTSLibNotInCFS
+
 
 from targetd.backends import lvm, zfs
 from targetd.main import TargetdError
