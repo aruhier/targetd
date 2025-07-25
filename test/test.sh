@@ -167,7 +167,13 @@ fi
 
 # get/build/run or install libstoragemgmt tests
 # Need to update lsm for latest ubuntu
-./test/lsm_test.sh
+#
+# ledmon not available for ubuntu, disabling this for
+# now.  Will update to build ledmon from source during
+# CI test.
+#
+#./test/lsm_test.sh
+echo "warning: lsm integration test disabled"
 
 rc=$?
 if [ $rc -ne 0 ]; then
