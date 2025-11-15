@@ -12,16 +12,15 @@ RUN apk update && \
         build-base \
         udev \
         lvm2 \
-        targetcli
+        targetcli \
+        py3-setproctitle \
+        py3-pyyaml-env-tag \
+        py3-six \
+        py3-libbytesize
 
 RUN sed -i 's/udev_rules = 1/udev_rules = 0/g' /etc/lvm/lvm.conf && \
     sed -i 's/udev_sync = 1/udev_sync = 0/g' /etc/lvm/lvm.conf && \
     rm -rf /usr/lib/libbd_lvm-dbus.so*
-
-RUN pip3 install \
-         setproctitle \
-         pyyaml \
-         six
 
 ADD . /targetd
 
